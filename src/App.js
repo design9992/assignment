@@ -6,11 +6,11 @@ class DueDate extends Component {
     render() {
         var monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         var d = new Date(this.props.dueDate);
-        var myDate = monthArray[d.getUTCMonth() - 1] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+        var myDate = monthArray[d.getUTCMonth() ] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
     
         return (
                 <span>
-                    due {myDate}
+                     {myDate}
                 </span>
         );
     }
@@ -133,15 +133,15 @@ class Submissions extends Component {
         }
         return (
             <div>
-                <ul>
+                <ul className="list-group" >
                 {
                     su.map((value, idx) => {
                         var cid = 'submission_'+idx;
-                        return <li key={idx}>
+                        return <li key={idx} className="list-group-item">
                             <div className="submission">
                             <input type="checkbox" id={cid} className="btnControl" />
-                            <label htmlFor={cid}><img src={value.creator.avatars.small} /> {value.creator.first_name} {value.creator.last_name}</label>
-                            <br />submission date: <DueDate dueDate={value.submitted_at} />
+                            <label htmlFor={cid}><img alt="" src={value.creator.avatars.small} /> {value.creator.first_name} {value.creator.last_name}</label>
+                            <br />turned in: <DueDate dueDate={value.submitted_at} />
                             
                             
                             <p className="content">{value.content}</p>
@@ -286,7 +286,7 @@ class App extends Component {
                             { 
                                 this.state.assignments.map((value, key) => {
                                     var url = '/assignment/' + key;
-                                    return <li key={key}><h3><Link to={url} >{value.title}</Link></h3><p>due at <DueDate dueDate={value.due_at} /></p></li>
+                                return <li key={key} className="list-group-item"><h4 className="list-group-item-heading"><Link to={url} >{value.title}</Link></h4><p className="list-group-item-text">due at <DueDate dueDate={value.due_at}/></p></li>
                                 })
                             }
                         </ul>
