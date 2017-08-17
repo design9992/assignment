@@ -1,0 +1,43 @@
+.home {
+    border: 1px solid black;
+    position: absolute;
+    width: 100%;
+    min-height: 400px;
+}
+
+.homeContent {
+    position: absolute;
+    height: 30px;
+    width: 150px;
+    border: 1px solid black;
+    top: 50%;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: -15px;
+}
+
+
+.btnControl {
+    display: none;
+}
+.btnControl ~ .content {
+    display: none;
+    background-color: #ccc;
+}
+
+.btnControl ~ label {
+    position: relative;
+    background-image: url('/img/up.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-right: 20px;
+    
+}
+
+.btnControl:checked ~ label {
+    background-image: url('/img/down.png');
+}
+
+.btnControl:checked ~ .content {
+    display: block;
+}
